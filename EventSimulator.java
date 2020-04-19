@@ -51,6 +51,7 @@ public class EventSimulator {
      * @param mu Service rate.
      * @param rho Resting rate.
      * @param restProb Probability of resting.
+     * @param greed Probability of a greedy customer.
      * */
     public static EventSimulator launch(int seed, int num, int nSelf, int qMax, int total, 
         double lambda, double mu, double rho, double restProb, double greed) {

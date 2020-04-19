@@ -41,8 +41,8 @@ public class Main {
     private static EventSimulator init(Scanner sc) {
         int seed = sc.nextInt();
         int serverNum = sc.nextInt();
-        int nSelf = sc.nextInt();
-        int qMax = sc.nextInt();
+        int nself = sc.nextInt();
+        int qmax = sc.nextInt();
         int customerNum = sc.nextInt();
         double lambda = sc.nextDouble();
         double mu = sc.nextDouble();
@@ -50,7 +50,7 @@ public class Main {
         double restProb = sc.nextDouble();
         double greedP = sc.nextDouble();
 
-        EventSimulator es = EventSimulator.launch(seed, serverNum, nSelf, qMax, customerNum,
+        EventSimulator es = EventSimulator.launch(seed, serverNum, nself, qmax, customerNum,
             lambda, mu, rho, restProb, greedP);
 
         return es;

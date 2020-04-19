@@ -11,6 +11,7 @@ interface EventHandler<E extends Event> {
 
     /**
      * Handles the given event and updates the statistics of the event.
+     * Not all events require an update of the statistics.
      * The returned event may or may not exist depending on the event handled.
      *
      * @param e The event to be handled.

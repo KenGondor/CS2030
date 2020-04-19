@@ -33,6 +33,12 @@ public class ServerEvent extends Event {
         return new ServerEvent(time, State.SERVER_BACK, server);
     }
 
+    /**
+     * Always return true for a server event. Enables quick identification
+     * event type.
+     * 
+     * @return True.
+     */
     @Override
     public boolean isServerEvent() {
         return true;

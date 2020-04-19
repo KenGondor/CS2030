@@ -4,6 +4,8 @@ import java.util.Optional;
 
 /**
  * A base class implementation of events.
+ * An event schedules the corresponding what actions, a server
+ * and customer associated with the evetn takes.
  *
  * @author LeeEnHao_A0204679W
  * */

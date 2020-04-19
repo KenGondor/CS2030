@@ -4,6 +4,11 @@ import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+/**
+ * A class with the logical implementation of getting the next event.
+ * 
+ * @author LeeEnHao_A0204679W
+ */
 public class Servlet implements EventHandler<Event> {
     /**Number of available servers. */
     private final Server[] serverList;
@@ -22,6 +27,10 @@ public class Servlet implements EventHandler<Event> {
      * Constructor for a Servlet object.
      *
      * @param servers Number of servers available.
+     * @param checkers Number of self-checkouts.
+     * @param qMax Maximum queue capacity for each server.
+     * @param randomGenerator RNG generator for simulating random events.
+     * @param restProb Probability of a normal server resting.
      * */
     public Servlet(int servers, int checkers, int qMax, 
         RandomGenerator randomGenerator, double restProb) {
@@ -64,10 +73,13 @@ public class Servlet implements EventHandler<Event> {
 
     /**
      * Handles the given event and updates the statistics of the event.
-     * The returned event may or may not exist depending on the event handled.
+     * The returned event may or may not exist depending on the event handled, 
+     * as well as the state of the participants of the event.
      *
      * @param e The event to be handled.
      * @param stats The event statistics tracker.
+     * @return An Optional describing an event if it exist. Else an Optional.empty() 
+     *     is returned.
      * */
     @Override
     public Optional<Event> handle(Event e, Statistics stats) {

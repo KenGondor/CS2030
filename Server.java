@@ -4,9 +4,8 @@ import java.util.Queue;
 import java.util.LinkedList;
 
 /**
- * A simple class for implementing a server object.
- * Server object keeps track of the customer it is 
- * serving.
+ * A server class encapsulates a customer bein served
+ * contains all the method implementation of queue management.
  *
  * @author LeeEnHao_A0204679W
  * @see Customer
@@ -23,6 +22,9 @@ public class Server {
 
     /**
      * Creates an idle server.
+     * 
+     * @param isSC Specifies if server is a self-checkout.
+     * @param initCapacity Server queue max length.
      * */
     public Server(int initCapacity, boolean isSC) {
         count++;
@@ -56,7 +58,7 @@ public class Server {
     }
 
     /**
-     * Adds a customer to the server wait lis.
+     * Adds a customer to this server's wait list.
      *
      * @param customer Waiting customer.*/
     public void enqueue(Customer customer) {
@@ -65,15 +67,16 @@ public class Server {
     }
 
     /**
-     * Checks if the queue/waitlist for server is empty.
+     * Checks if the queue/waitlist for this server is empty.
      *
-     * @return True if the waitlist/queue is empty.*/
+     * @return True if the waitlist/queue is empty.
+     * */
     public boolean isQueueEmpty() {
         return hasWaitingSpace() && waitList.size() == 0;
     }
 
     /**
-     * Checks if the server is a self checkout server.
+     * Checks if this server is a self checkout server.
      * 
      * @return true if this a self checkout server.
      */
@@ -82,7 +85,8 @@ public class Server {
     }
 
     /**
-     * Checks if anymore customers can be added to wait list.
+     * Checks if anymore customers can be added to 
+     * this server's wait list.
      *
      * @return True if there is more space for waiting customers.
      * */
@@ -91,7 +95,8 @@ public class Server {
     }
 
     /**
-     * Gets the queue size.
+     * Gets the queue size of thie server.
+     * Note: This is not the max capacity of the queue.
      * 
      * @return size of queue
      */
@@ -100,7 +105,7 @@ public class Server {
     }
 
     /**
-     * Peeks the first-in-line customer of the queue.
+     * Peeks the first-in-line customer of this server's queue.
      * 
      * @return customer at the front of queue, null if no customer
      */
@@ -109,7 +114,7 @@ public class Server {
     }
 
     /**
-     * Checks if the customer is at the front of the queue.
+     * Checks if the customer is at the front of this server's queue.
      * 
      * @param c customer.
      * @return true if the customer is the first-in-line for this server.
@@ -123,7 +128,9 @@ public class Server {
     }
 
     /**
-     * Makes the server serve the customer that is waiting.
+     * Makes this server serve the customer that is waiting.
+     * Dequeues the customer from this server's queue and return the customer.
+     * 
      * 
      * @param time Time the server serves the waiting customer.
      * @param completionTime Time of the completion.
@@ -137,7 +144,8 @@ public class Server {
     }
 
     /**
-     * Dequeue the first-in-line customer but does not make this server serve the customer.
+     * Dequeue the first-in-line customer but does not 
+     * make this server serve the customer.
      * 
      * @return the customer being dequeued
      */
@@ -147,7 +155,7 @@ public class Server {
     }
 
     /**
-     * Returns the next time the server is able to serve.
+     * Returns the next time this server is able to serve.
      *
      * @return time
      * */
@@ -156,7 +164,8 @@ public class Server {
     }
 
     /**
-     * Makes the server serve the customer.
+     * Makes this server serve the customer at a specified timing,
+     * with a specified expected time of completion.
      *
      * @param customer Customer to be served.
      * @param time Time which server serve customer.
@@ -177,13 +186,15 @@ public class Server {
 
     /**
      * Checks if the server is serving any customer now.
+     * 
+     * @return True if this server is idle.
      */
     public boolean isIdle() {
         return customerBeingServed == null;
     }
 
     /**
-     * Changes the server state to resting.
+     * Changes this server state to resting.
      */
     public void rest() {
         isResting = true;
